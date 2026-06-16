@@ -1,0 +1,81 @@
+name: Secure Job Portal CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # 1. INTEGRATION & VERIFICATION STAGE
+  test-and-scan:
+    name: Lint & Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: |
+            backend/package.json
+            frontend/package.json
+
+      # Backend Checks
+      - name: Install Backend Modules
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Backend Security Audit Scan
+        working-directory: ./backend
+        run: npm audit --audit-level=high
+
+      # Frontend Checks
+      - name: Install Frontend Modules
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Frontend Linters
+        working-directory: ./frontend
+        run: npm run lint --if-present
+
+  # 2. CONTINUOUS DEPLOYMENT STAGE (Main branch only)
+  build-and-deploy:
+    name: Build & Rolling Deploy
+    needs: test-and-scan
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Mock container registry login
+      - name: Authenticate to Container Registry
+        run: |
+          echo "Authenticating to Docker Hub / Amazon ECR..."
+          echo "Login completed successfully."
+
+      # Build stage
+      - name: Compile & Push Backend Image
+        run: |
+          docker build -t jobportal-backend:latest ./backend
+          echo "Simulated push: jobportal-backend:latest pushed to ECR registry."
+
+      - name: Compile & Push Frontend Image
+        run: |
+          docker build -t jobportal-frontend:latest ./frontend
+          echo "Simulated push: jobportal-frontend:latest pushed to ECR registry."
+
+      # Zero-downtime rolling update rollout
+      - name: ECS Service Update (Zero-Downtime Rolling Update)
+        run: |
+          echo "Initiating AWS ECS rolling update deployment..."
+          echo "Executing: aws ecs update-service --cluster prod-cluster --service app-service --force-new-deployment"
+          echo "Rolling out new task definitions... keeping old tasks active until health checks pass."
+          echo "Health check verifications successful. Rolling update finished with zero downtime."

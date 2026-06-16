@@ -1,0 +1,66 @@
+{"level":"info","message":"Created local uploads directory at: /Users/hamza/Desktop/WORK/UNV & UN/DevOps/uploads","timestamp":"2026-06-16 11:31:10"}
+{"level":"info","message":"Secure Job Portal Backend running on port 5000 in development mode","timestamp":"2026-06-16 11:31:10"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:31:42"}
+{"code":"28000","file":"miscinit.c","length":100,"level":"error","line":"804","message":"Get all jobs error role \"postgres\" does not exist","name":"error","routine":"InitializeSessionUserId","severity":"FATAL","stack":"error: role \"postgres\" does not exist\n    at /Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.findAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/models/jobModel.js:128:22)\n    at async getAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/controllers/jobController.js:155:22)","timestamp":"2026-06-16 11:31:42"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:31:42"}
+{"code":"28000","file":"miscinit.c","length":100,"level":"error","line":"804","message":"Get all jobs error role \"postgres\" does not exist","name":"error","routine":"InitializeSessionUserId","severity":"FATAL","stack":"error: role \"postgres\" does not exist\n    at /Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.findAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/models/jobModel.js:128:22)\n    at async getAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/controllers/jobController.js:155:22)","timestamp":"2026-06-16 11:31:42"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:33:18"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:33:18"}
+{"code":"3D000","file":"postinit.c","length":95,"level":"error","line":"1016","message":"Get all jobs error database \"jobportal\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"jobportal\" does not exist\n    at /Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.findAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/models/jobModel.js:128:22)\n    at async getAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/controllers/jobController.js:155:22)","timestamp":"2026-06-16 11:33:18"}
+{"code":"3D000","file":"postinit.c","length":95,"level":"error","line":"1016","message":"Get all jobs error database \"jobportal\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"jobportal\" does not exist\n    at /Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.findAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/models/jobModel.js:128:22)\n    at async getAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/controllers/jobController.js:155:22)","timestamp":"2026-06-16 11:33:18"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:33:55"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:33:55"}
+{"code":"3D000","file":"postinit.c","length":95,"level":"error","line":"1016","message":"Get all jobs error database \"jobportal\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"jobportal\" does not exist\n    at /Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.findAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/models/jobModel.js:128:22)\n    at async getAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/controllers/jobController.js:155:22)","timestamp":"2026-06-16 11:33:55"}
+{"code":"3D000","file":"postinit.c","length":95,"level":"error","line":"1016","message":"Get all jobs error database \"jobportal\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"jobportal\" does not exist\n    at /Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.findAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/models/jobModel.js:128:22)\n    at async getAll (/Users/hamza/Desktop/WORK/UNV & UN/DevOps/backend/controllers/jobController.js:155:22)","timestamp":"2026-06-16 11:33:55"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:34:50"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:34:50"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:34:50"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:34:50"}
+{"level":"info","message":"Request: POST /api/auth/register - IP: ::1","timestamp":"2026-06-16 11:35:56"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:35:56"}
+{"level":"info","message":"User registered successfully: john@email.com (Candidate)","timestamp":"2026-06-16 11:35:56"}
+{"level":"info","message":"Request: POST /api/auth/login - IP: ::1","timestamp":"2026-06-16 11:36:16"}
+{"level":"info","message":"User logged in successfully: john@email.com","timestamp":"2026-06-16 11:36:16"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:16"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:16"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:24"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=Remote&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:29"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=Remote&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:29"}
+{"level":"info","message":"Request: GET /api/jobs?search=IT&location=Remote&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:33"}
+{"level":"info","message":"Request: GET /api/jobs?search=IT&location=Remote&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:34"}
+{"level":"info","message":"Request: GET /api/jobs?search=IT&location=Remote&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:34"}
+{"level":"info","message":"Request: GET /api/jobs?search=IT&location=Remote&employment_type=Full-time&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:36:35"}
+{"level":"info","message":"Request: GET /api/auth/profile - IP: ::1","timestamp":"2026-06-16 11:38:18"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:38:19"}
+{"level":"info","message":"Request: GET /api/auth/profile - IP: ::1","timestamp":"2026-06-16 11:38:19"}
+{"level":"info","message":"Request: GET /api/jobs/applications/me - IP: ::1","timestamp":"2026-06-16 11:38:19"}
+{"level":"info","message":"Request: GET /api/jobs/applications/me - IP: ::1","timestamp":"2026-06-16 11:38:19"}
+{"level":"info","message":"Request: POST /api/auth/profile/resume - IP: ::1","timestamp":"2026-06-16 11:38:29"}
+{"level":"info","message":"Scanning file d6c9f7f5-3a05-4707-8c1b-67e74901f505.pdf for viruses...","timestamp":"2026-06-16 11:38:29"}
+{"level":"info","message":"Using development local storage for resume file: d6c9f7f5-3a05-4707-8c1b-67e74901f505.pdf","timestamp":"2026-06-16 11:38:29"}
+{"level":"info","message":"Resume uploaded by candidate john@email.com: Hamza Ahmed CV.pdf","timestamp":"2026-06-16 11:38:29"}
+{"level":"info","message":"Request: GET /api/auth/profile - IP: ::1","timestamp":"2026-06-16 11:38:29"}
+{"level":"info","message":"Request: GET /api/jobs/applications/me - IP: ::1","timestamp":"2026-06-16 11:38:29"}
+{"level":"info","message":"Request: POST /api/auth/register - IP: ::1","timestamp":"2026-06-16 11:39:12"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:39:12"}
+{"level":"info","message":"User registered successfully: admin@email.com (Recruiter)","timestamp":"2026-06-16 11:39:12"}
+{"level":"info","message":"Request: POST /api/auth/login - IP: ::1","timestamp":"2026-06-16 11:39:23"}
+{"level":"info","message":"User logged in successfully: admin@email.com","timestamp":"2026-06-16 11:39:23"}
+{"level":"info","message":"Request: GET /api/jobs - IP: ::1","timestamp":"2026-06-16 11:39:23"}
+{"level":"info","message":"Request: GET /api/jobs - IP: ::1","timestamp":"2026-06-16 11:39:23"}
+{"level":"info","message":"Request: GET /api/jobs/applications/recruiter - IP: ::1","timestamp":"2026-06-16 11:39:23"}
+{"level":"info","message":"Request: GET /api/jobs/applications/recruiter - IP: ::1","timestamp":"2026-06-16 11:39:23"}
+{"level":"info","message":"Request: POST /api/auth/login - IP: ::1","timestamp":"2026-06-16 11:40:25"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:40:25"}
+{"action":"Login Attempt Failed","attempts":1,"email":"admin@jobportal.com","ipAddress":"::1","level":"warn","message":"Security event: Login Attempt Failed","security":true,"timestamp":"2026-06-16 11:40:25","userId":"a0e0a9bc-993d-4c3d-9d45-66738b556b10"}
+{"level":"info","message":"Request: POST /api/auth/login - IP: ::1","timestamp":"2026-06-16 11:42:18"}
+{"level":"info","message":"Database connection pool established successfully","timestamp":"2026-06-16 11:42:18"}
+{"level":"info","message":"User logged in successfully: john@email.com","timestamp":"2026-06-16 11:42:18"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:42:18"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:42:18"}
+{"level":"info","message":"Request: GET /api/auth/profile - IP: ::1","timestamp":"2026-06-16 11:42:20"}
+{"level":"info","message":"Request: GET /api/auth/profile - IP: ::1","timestamp":"2026-06-16 11:42:20"}
+{"level":"info","message":"Request: GET /api/jobs/applications/me - IP: ::1","timestamp":"2026-06-16 11:42:20"}
+{"level":"info","message":"Request: GET /api/jobs/applications/me - IP: ::1","timestamp":"2026-06-16 11:42:20"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:42:26"}
+{"level":"info","message":"Request: GET /api/jobs?search=&location=&employment_type=&page=1&limit=6 - IP: ::1","timestamp":"2026-06-16 11:42:26"}

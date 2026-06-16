@@ -1,0 +1,121 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: jobportal_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jobportal
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Initial database SQL schema mount
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    networks:
+      - jobportal_network
+
+  # 2. Node.js Express API Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jobportal_backend
+    restart: always
+    environment:
+      PORT: 5000
+      NODE_ENV: development
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: jobportal
+      JWT_SECRET: dev_jwt_secret_key_8e4fa694c9ef294b
+      JWT_EXPIRES_IN: 1h
+      ALLOWED_ORIGIN: http://localhost # Frontend client access URL
+    ports:
+      - "5000:5000"
+    volumes:
+      # Map logs folder locally for inspects
+      - ./backend/logs:/usr/src/app/logs
+      # Map uploads folder for local resume writes
+      - uploads_data:/usr/src/app/uploads
+    depends_on:
+      - db
+    networks:
+      - jobportal_network
+
+  # 3. Nginx React Frontend Client Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: jobportal_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - jobportal_network
+
+  # 4. Prometheus Scraper Service
+  prometheus:
+    image: prom/prometheus:v2.51.1
+    container_name: jobportal_prometheus
+    restart: always
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/prometheus/alert.rules:/etc/prometheus/alert.rules:ro
+    ports:
+      - "9090:9090"
+    depends_on:
+      - backend
+    networks:
+      - jobportal_network
+
+  # 5. Node Exporter (System Metrics collector)
+  node-exporter:
+    image: prom/node-exporter:v1.7.0
+    container_name: jobportal_node_exporter
+    restart: always
+    ports:
+      - "9100:9100"
+    networks:
+      - jobportal_network
+
+  # 6. Grafana Dashboard Analytics Service
+  grafana:
+    image: grafana/grafana:10.4.1
+    container_name: jobportal_grafana
+    restart: always
+    environment:
+      # Enable anonymous admin access for local demo checks
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
+    ports:
+      - "3000:3000"
+    volumes:
+      # Automatic dashboard & datasource injection mounts
+      - ./monitoring/grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml:ro
+      - ./monitoring/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml:ro
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - jobportal_network
+
+networks:
+  jobportal_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  uploads_data:
+    driver: local

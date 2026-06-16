@@ -1,0 +1,52 @@
+groups:
+  - name: system_and_app_alerts
+    rules:
+      # 1. CPU usage > 80%
+      - alert: HostCpuHigh
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU utilization detected on {{ $labels.instance }}"
+          description: "CPU usage is at {{ $value }}% (above the 80% threshold) for more than 2 minutes."
+
+      # 2. Memory usage > 85%
+      - alert: HostMemoryHigh
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Memory usage detected on {{ $labels.instance }}"
+          description: "Memory usage is at {{ $value }}% (above the 85% threshold) for more than 2 minutes."
+
+      # 3. Disk usage > 90%
+      - alert: HostDiskHigh
+        expr: (node_filesystem_size_bytes{mountpoint="/"} - node_filesystem_free_bytes{mountpoint="/"}) / node_filesystem_size_bytes{mountpoint="/"} * 100 > 90
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High Disk space usage on {{ $labels.instance }}"
+          description: "Disk partition space usage has exceeded 90% (currently {{ $value }}%) for over 5 minutes."
+
+      # 4. Application API Down
+      - alert: BackendServiceUnavailable
+        expr: up{job="backend"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backend Application API down"
+          description: "The secure Job Portal Express API container is offline or unreachable."
+
+      # 5. Excessive Login Failures (Security alert)
+      - alert: SecurityBruteForceLoginAttempts
+        expr: rate(job_portal_login_failures_total[5m]) * 300 > 20
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Brute-Force threat detected"
+          description: "High rate of failed logins ({{ $value }} failures) detected within 5 minutes."

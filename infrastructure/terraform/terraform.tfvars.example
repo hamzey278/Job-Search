@@ -1,0 +1,12 @@
+# AWS Region to deploy infrastructure
+aws_region = "us-east-1"
+
+# Environment tag naming
+environment = "production"
+
+# Database administrative password (MUST be changed)
+db_username = "dbadmin"
+db_password = "SecureDbPasswordChangeMeInProduction123!"
+
+# S3 bucket identifier prefix
+s3_bucket_prefix = "secure-jobportal-resumes"
