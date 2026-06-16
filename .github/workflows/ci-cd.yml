@@ -43,8 +43,7 @@ jobs:
         run: npm run lint --if-present
 
   # 2. CONTINUOUS DEPLOYMENT STAGE (Main branch only)
- # 2. DEPLOY TO AZURE
-build-and-deploy:
+  build-and-deploy:
   name: Deploy to Azure App Service
   needs: test-and-scan
   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
