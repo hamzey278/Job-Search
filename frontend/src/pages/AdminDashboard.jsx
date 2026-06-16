@@ -29,6 +29,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     fetchAdminData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   const handleToggleUserActive = async (user) => {

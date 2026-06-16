@@ -56,6 +56,7 @@ export default function JobsPage() {
 
   useEffect(() => {
     fetchJobs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, employmentType]);
 
   const handleSearchSubmit = (e) => {
