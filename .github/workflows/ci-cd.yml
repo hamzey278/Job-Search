@@ -44,10 +44,10 @@ jobs:
 
   # 2. CONTINUOUS DEPLOYMENT STAGE (Main branch only)
   build-and-deploy:
-  name: Deploy to Azure App Service
-  needs: test-and-scan
-  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-  runs-on: ubuntu-latest
+   name: Deploy to Azure App Service
+   needs: test-and-scan
+   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+   runs-on: ubuntu-latest
 
   steps:
     - name: Checkout Repository
