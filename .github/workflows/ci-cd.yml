@@ -43,39 +43,33 @@ jobs:
         run: npm run lint --if-present
 
   # 2. CONTINUOUS DEPLOYMENT STAGE (Main branch only)
-  build-and-deploy:
-    name: Build & Rolling Deploy
-    needs: test-and-scan
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository Code
-        uses: actions/checkout@v4
+ # 2. DEPLOY TO AZURE
+build-and-deploy:
+  name: Deploy to Azure App Service
+  needs: test-and-scan
+  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  runs-on: ubuntu-latest
 
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      # Mock container registry login
-      - name: Authenticate to Container Registry
-        run: |
-          echo "Authenticating to Docker Hub / Amazon ECR..."
-          echo "Login completed successfully."
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
 
-      # Build stage
-      - name: Compile & Push Backend Image
-        run: |
-          docker build -t jobportal-backend:latest ./backend
-          echo "Simulated push: jobportal-backend:latest pushed to ECR registry."
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: npm ci
 
-      - name: Compile & Push Frontend Image
-        run: |
-          docker build -t jobportal-frontend:latest ./frontend
-          echo "Simulated push: jobportal-frontend:latest pushed to ECR registry."
+    - name: Zip Backend Application
+      run: |
+        zip -r backend.zip backend
 
-      # Zero-downtime rolling update rollout
-      - name: ECS Service Update (Zero-Downtime Rolling Update)
-        run: |
-          echo "Initiating AWS ECS rolling update deployment..."
-          echo "Executing: aws ecs update-service --cluster prod-cluster --service app-service --force-new-deployment"
-          echo "Rolling out new task definitions... keeping old tasks active until health checks pass."
-          echo "Health check verifications successful. Rolling update finished with zero downtime."
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: jobsearch-app
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: backend.zip
