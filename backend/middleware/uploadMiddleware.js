@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const logger = require('../config/logger');
 
 // Ensure temp directory exists locally for stage-one file writing
-const tempDir = path.join(__dirname, '../../uploads/temp');
+const tempDir = path.join(process.env.UPLOADS_PATH || path.join(__dirname, '../../uploads'), 'temp');
 if (!fs.existsSync(tempDir)) {
   fs.mkdirSync(tempDir, { recursive: true });
 }

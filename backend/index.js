@@ -64,7 +64,7 @@ app.use((req, res, next) => {
 });
 
 // 5. STATIC UPLOADS DIR FOR RESUMES (Dev only fallback)
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/uploads', express.static(process.env.UPLOADS_PATH || path.join(__dirname, '../uploads')));
 
 // 6. PROMETHEUS METRICS ENDPOINT
 app.get('/metrics', async (req, res) => {

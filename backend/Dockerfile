@@ -14,8 +14,8 @@ RUN npm ci --only=production
 # Copy application source code
 COPY . .
 
-# Ensure the logs directory is owned by the node user
-RUN mkdir -p logs && chown -R node:node /usr/src/app
+# Ensure the logs and uploads directories are owned by the node user
+RUN mkdir -p logs uploads && chown -R node:node /usr/src/app
 
 # Run as non-root user for security hardening
 USER node

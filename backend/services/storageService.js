@@ -3,7 +3,7 @@ const path = require('path');
 const logger = require('../config/logger');
 
 // Ensure target uploads folder exists locally
-const uploadDir = path.join(__dirname, '../../uploads');
+const uploadDir = process.env.UPLOADS_PATH || path.join(__dirname, '../../uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
   logger.info(`Created local uploads directory at: ${uploadDir}`);
